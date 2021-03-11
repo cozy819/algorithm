@@ -1,21 +1,20 @@
 input = 20
 
+# 주어진 자연수 n이 소수이기 위한 필요 충분 조건은
+# n이 n의 제곱근보다 크지 않은 어떤 소수로도 나눠지지 않는다
+# => 수가 수를 나누면 몫이 발생하는데, 몫과 나누는 수 둘 중 하나는 반드시 n의 제곱근 이하이다
+
+
 def find_prime_list_under_number(number):
-    result = []
+    prime_list = []
 
-    number_list = range(2, number + 1)
-
-    for i in number_list:
-        check = True
-        divide_by_list = range(2, i + 1)
-        for j in divide_by_list:
-            if i % j == 0 and i != j:
-                check = False
-
-        if check:
-            result.append(i)
-
-    return result
+    for n in range(2, number + 1):
+        for i in prime_list:
+            if n % i == 0 and i * i <= n:
+                break
+        else:
+            prime_list.append(n)
+    return prime_list
 
 
 result = find_prime_list_under_number(input)
