@@ -11,7 +11,7 @@ def get_max_discounted_price(prices, coupons):
     max_discounted_price = 0
 
     while price_index < len(prices) and coupon_index < len(coupons):
-        max_discounted_price += prices[price_index] * (1 - coupons[coupon_index] / 100);
+        max_discounted_price += prices[price_index] * (1 - coupons[coupon_index] / 100)
         price_index += 1
         coupon_index += 1
 

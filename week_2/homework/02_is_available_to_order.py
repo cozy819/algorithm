@@ -28,5 +28,13 @@ def is_available_to_order(menus, orders):
     return switch
 
 
+def is_available_to_order_way2(menus, orders):
+    menus_set = set(menus)
+    for order in orders:
+        if order not in menus_set:
+            return False
+    return True
+
+
 result = is_available_to_order(shop_menus, shop_orders)
 print(result)

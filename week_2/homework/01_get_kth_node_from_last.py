@@ -15,22 +15,36 @@ class LinkedList:
         cur.next = Node(value)
 
     def get_kth_node_from_last(self, k):
-        node_1 = self.head
         length_count = 1
+        cur = self.head
 
-        while node_1.next is not None:
-            node_1 = node_1.next
+        while cur.next is not None:
+            cur = cur.next
             length_count += 1
-        print("length_count: ", length_count)
 
-        index_k = length_count - 2
-        k_count = 0
-        node_2 = self.head
-        while k_count != index_k:
-            node_2 = node_2.next
-            k_count += 1
+        end_length = length_count - k
+        cur = self.head
+        for i in range(end_length):
+            cur = cur.next
 
-        return node_2
+        return cur
+
+    def get_kth_node_from_last_way2(self, k):
+        # 1. 노드를 2개 잡는다
+        slow = self.head
+        fast = self.head
+
+        # 2. 노드 사이의 간격을 k만큼 두게 한다
+        for i in range(k):
+            fast = fast.next
+
+        # 3. 계속 한 칸씩 같이 이동한다
+        while fast is not None:
+            fast = fast.next
+            slow = slow.next
+
+        # 4. 뒤의 노드가 끝에 도달하면 앞의 노드를 반환
+        return slow
 
 
 linked_list = LinkedList(6)
